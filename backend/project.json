@@ -46,7 +46,8 @@
       "options": {
         "buildTarget": "backend:build",
         "runBuildTargetDependencies": false,
-        "command": "npx ts-node-dev src/main.ts"
+        "watch": true,
+        "entry": "backend/src/main.ts"
       },
       "configurations": {
         "development": {

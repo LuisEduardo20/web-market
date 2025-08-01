@@ -8,7 +8,18 @@
     "serve": {
       "executor": "@nx/vite:dev-server",
       "options": {
-        "port": 4200
+        "port": 4200,
+        "buildTarget": "frontend:build",
+        "runBuildTargetDependencies": false,
+        "command": "vite build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "frontend:build:development"
+        },
+        "production": {
+          "buildTarget": "frontend:build:production"
+        }
       }
     }
   }
