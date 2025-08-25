@@ -1,66 +1,30 @@
 {
   "name": "backend",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "backend/src",
   "projectType": "application",
-  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/esbuild:esbuild",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
       "options": {
-        "platform": "node",
         "outputPath": "dist/backend",
-        "format": ["cjs"],
-        "bundle": false,
         "main": "backend/src/main.ts",
-        "tsConfig": "backend/tsconfig.app.json",
-        "assets": ["backend/src/assets"],
-        "generatePackageJson": true,
-        "esbuildOptions": {
-          "sourcemap": true,
-          "outExtension": {
-            ".js": ".js"
-          }
-        }
-      },
-      "configurations": {
-        "development": {},
-        "production": {
-          "esbuildOptions": {
-            "sourcemap": false,
-            "outExtension": {
-              ".js": ".js"
-            }
-          }
-        }
+        "tsConfig": "backend/tsconfig.app.json"
       }
     },
     "serve": {
-      "continuous": true,
-
       "executor": "nx:run-commands",
-      "defaultConfiguration": "development",
-      "dependsOn": ["build"],
       "options": {
-        "buildTarget": "backend:build",
-        "runBuildTargetDependencies": false,
-        "watch": true,
-        "entry": "backend/src/main.ts"
+        "command": "node dist/backend/src/main.js",
+        "cwd": "."
       },
-      "configurations": {
-        "development": {
-          "buildTarget": "backend:build:development"
-        },
-        "production": {
-          "buildTarget": "backend:build:production"
-        }
-      }
+      "dependsOn": ["build"]
     },
-    "test": {
+    "serve:dev": {
+      "executor": "nx:run-commands",
       "options": {
-        "passWithNoTests": true
+        "command": "ts-node-dev --respawn --transpile-only --project backend/tsconfig.app.json backend/src/main.ts",
+        "cwd": "."
       }
     }
   }

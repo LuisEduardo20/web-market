@@ -1,14 +1,20 @@
 import 'reflect-metadata'
+import express from 'express'
 import { InversifyExpressServer } from 'inversify-express-utils'
-import container from './inversify.config'
-import './controllers/UserController'
+import { Container } from 'inversify'
+import './controllers/hello.controller'
 
-const port = process.env.PORT ? Number(process.env.PORT) : 3000
+// IoC Container
+const container = new Container()
 
+// Create server
 const server = new InversifyExpressServer(container)
-const app = server.build()
 
-app.listen(port, () => console.log(`Server running on port ${port}`))
-app.get('/', (req, res) => {
-  res.send({ message: 'Working fine' }).status(200)
+server.setConfig((app) => {
+  app.use(express.json())
+})
+
+const app = server.build()
+app.listen(3000, () => {
+  console.log('🚀 Backend rodando em http://localhost:3000')
 })
