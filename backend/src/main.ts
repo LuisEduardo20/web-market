@@ -2,13 +2,11 @@ import 'reflect-metadata'
 import express from 'express'
 import { InversifyExpressServer } from 'inversify-express-utils'
 import { Container } from 'inversify'
-import './controllers/hello.controller'
+import './routes/index.routes'
 
-// IoC Container
 const container = new Container()
 
-// Create server
-const server = new InversifyExpressServer(container)
+const server = new InversifyExpressServer(container, null, { rootPath: '/api' })
 
 server.setConfig((app) => {
   app.use(express.json())
