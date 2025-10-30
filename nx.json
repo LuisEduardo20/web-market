@@ -1,0 +1,11 @@
+{
+  "npmScope": "webmarket",
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    }
+  },
+  "tasksRunnerOptions": {},
+  "projects": {}
+}

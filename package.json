@@ -1,0 +1,24 @@
+{
+  "name": "web-market-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "scripts": {
+    "nx": "nx",
+    "install:all": "yarn install",
+    "start:frontend": "yarn workspace apps-frontend dev",
+    "build:frontend": "yarn workspace apps-frontend build",
+    "start:backend": "yarn workspace apps-backend dev",
+    "test:frontend:unit": "yarn workspace apps-frontend test:unit",
+    "test:frontend:integration": "yarn workspace apps-frontend test:integration",
+    "test:backend": "yarn workspace apps-backend test"
+  },
+  "devDependencies": {
+    "nx": "^15.0.0",
+    "typescript": "^5.2.0"
+  },
+  "dependencies": {}
+}
