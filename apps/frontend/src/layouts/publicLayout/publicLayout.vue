@@ -1,17 +1,11 @@
 <template>
   <v-app>
     <v-main>
-      <v-container class="page-wrapper">
-        <RouterView
-          class="w-100 h-100"
-          style="height: calc(100vh) !important"
-          v-slot="{ Component }"
-        >
-          <div class="page-wrapper">
-            <transition name="slide" mode="out-in">
-              <component :is="Component" :key="$route.path" />
-            </transition>
-          </div>
+      <v-container class="page-wrapper bg-blue">
+        <RouterView v-slot="{ Component }">
+          <transition name="slide" mode="out-in">
+            <component :is="Component" :key="$route.path" />
+          </transition>
         </RouterView>
       </v-container>
     </v-main>
