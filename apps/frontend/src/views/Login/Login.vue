@@ -1,8 +1,7 @@
 <template>
-  <div class="fill-height bg-red d-flex align-center justify-center">
-    <!-- style="height: 100vh" -->
+  <v-container class="bg-red d-flex align-center justify-center">
     <v-sheet
-      class="mx-auto pa-12 pb-8"
+      class="x-auto pa-12 pb-8"
       elevation="8"
       width="448"
       rounded="lg"
@@ -44,8 +43,7 @@
         </v-btn>
       </v-form>
     </v-sheet>
-  </div>
-  >
+  </v-container>
 </template>
 
 <script lang="ts" setup>
@@ -71,6 +69,4 @@ const lastNameRules = [
 const onSubmit = () => {
   alert(`E-Mail: ${email.value}\nPassword: ${lastName.value}`);
 };
-
-// export default defineComponent({ components: { HelloWorld } });
 </script>
