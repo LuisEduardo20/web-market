@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <v-container class="page-wrapper bg-blue">
+      <v-container class="w-100 h-100 page-wrapper">
         <RouterView v-slot="{ Component }">
           <transition name="slide" mode="out-in">
             <component :is="Component" :key="$route.path" />
