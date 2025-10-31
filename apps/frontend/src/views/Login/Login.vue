@@ -1,20 +1,22 @@
 <template>
   <v-container
-    class="h-100 d-flex flex-column ga-8 align-center page-container justify-center bg-blue-lighten-5"
+    class="h-100 d-flex flex-column ga-8 align-center page-container justify-center bg-blue-lighten-5 pa-4"
   >
-    <div class="d-flex flex-column align-center">
-      <h2 class="text-title-1 text-medium-emphasis">Bem vindo de volta!</h2>
-      <p class="text-body-1 text-medium-emphasis">
+    <div class="d-flex flex-column align-center px-4 ga-2">
+      <h2 class="text-title-1 text-medium-emphasis text-center">
+        Bem vindo de volta!
+      </h2>
+      <p class="text-body-1 text-medium-emphasis text-center">
         Por favor, insira suas credenciais para continuar.
       </p>
     </div>
 
     <v-sheet
-      class="x-auto pa-12 pb-8"
+      class="x-auto pa-4 pa-md-8 pa-lg-12 pb-4 pb-md-8"
       elevation="8"
-      width="448"
+      width="100%"
+      max-width="448"
       rounded="lg"
-      fill-height
     >
       <v-form fast-fail @submit.prevent="onSubmit">
         <v-text-field
@@ -38,7 +40,7 @@
           class="text-subtitle-1 text-medium-emphasis mt-4 mb-2 d-flex justify-end"
         >
           <a
-            class="text-caption text-decoration-none text-blue"
+            class="text-caption text-decoration-none text-blue hover-link"
             href="#"
             rel="noopener noreferrer"
             target="_blank"
@@ -47,17 +49,26 @@
           >
         </div>
 
-        <v-btn class="mb-8" color="blue" size="large" variant="tonal" block>
+        <v-btn
+          class="mb-8"
+          color="blue"
+          size="large"
+          variant="tonal"
+          block
+          type="submit"
+        >
           Login
         </v-btn>
       </v-form>
 
-      <div class="pt-4 d-flex align-center justify-center ga-2">
-        <p class="text-subtitle-1 text-medium-emphasis">
+      <div
+        class="pt-4 d-flex flex-column flex-sm-row align-center justify-center ga-2 flex-wrap"
+      >
+        <p class="text-subtitle-1 text-medium-emphasis ma-0">
           Não tem uma conta ainda?
         </p>
         <a
-          class="text-decoration-none text-blue"
+          class="text-decoration-none text-blue hover-link"
           href="#"
           rel="noopener noreferrer"
           target="_blank"

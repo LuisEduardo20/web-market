@@ -1,3 +1,17 @@
-.page-container {
-  max-width: 100% !important;
+:deep(.v-form) {
+  width: 100%;
+}
+
+.login-container {
+  @include mobile {
+    .login-title {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  @include from-tablet {
+    .login-title {
+      font-size: $font-size-3xl;
+    }
+  }
 }
