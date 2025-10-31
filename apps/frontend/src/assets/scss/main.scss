@@ -1,0 +1,135 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: $font-family-base;
+  color: $secondary-color;
+}
+
+p {
+  font-size: clamp(0.875rem, 3vw, 1rem);
+  line-height: 1.4;
+
+  @include mobile {
+    margin-bottom: 8px;
+  }
+
+  @include from-tablet {
+    margin-bottom: 12px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+
+  @include mobile {
+    margin-bottom: 8px;
+  }
+
+  @include from-tablet {
+    margin-bottom: 12px;
+  }
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  @include transition(color);
+  word-break: break-word;
+
+  &:hover {
+    color: $accent-color;
+  }
+
+  @include mobile {
+    font-size: 0.75rem;
+  }
+}
+
+.v-text-field {
+  margin-bottom: 12px;
+
+  @include mobile {
+    margin-bottom: 10px;
+  }
+}
+
+.v-btn {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  padding: clamp(8px, 2vw, 12px) !important;
+  @include transition;
+
+  @include mobile {
+    min-height: 44px; // Acessibilidade em mobile
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.page-container {
+  max-width: 100% !important;
+  min-height: 100vh;
+  padding: 16px;
+
+  @include from-tablet {
+    padding: 24px;
+  }
+
+  @include from-desktop {
+    padding: 32px;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.v-sheet {
+  animation: slideInUp $transition-slow ease-out;
+}
+
+.hover-link {
+  position: relative;
+  @include transition(color);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    @include transition(width);
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
