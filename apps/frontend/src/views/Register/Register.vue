@@ -4,10 +4,10 @@
   >
     <div class="d-flex flex-column align-center px-4 ga-2">
       <h2 class="text-title-1 text-medium-emphasis text-center">
-        Bem vindo de volta!
+        Cadastre sua conta
       </h2>
       <p class="text-body-1 text-medium-emphasis text-center">
-        Por favor, insira suas credenciais para continuar.
+        Conecte-se com nossa comunidade de vendas!
       </p>
     </div>
 
@@ -19,6 +19,13 @@
       rounded="lg"
     >
       <v-form fast-fail @submit.prevent="onSubmit">
+        <v-text-field
+          v-model="email"
+          :rules="emailRules"
+          label="Nome completo"
+          prepend-inner-icon="mdi-account"
+        ></v-text-field>
+
         <v-text-field
           v-model="email"
           :rules="emailRules"
@@ -34,6 +41,14 @@
           label="Senha"
           prepend-inner-icon="mdi-lock-outline"
           @click:append-inner="visible = !visible"
+        ></v-text-field>
+
+        <v-text-field
+          type="password"
+          v-model="password"
+          :rules="passwordRules"
+          label="Confirme a senha"
+          prepend-inner-icon="mdi-lock-outline"
         ></v-text-field>
 
         <div

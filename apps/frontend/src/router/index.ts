@@ -9,24 +9,24 @@ const router = createRouter({
   routes: [publicRoutes, privateRoutes],
 });
 
-router.beforeEach((to, from, next) => {
-  const { token } = useAuthStore(pinia);
+// router.beforeEach((to, from, next) => {
+//   const { token } = useAuthStore(pinia);
 
-  if (to.name === "ResetView") {
-    next();
-  }
+//   if (to.name === "ResetView") {
+//     next();
+//   }
 
-  if (!token && to.name !== "LoginView") {
-    next({ name: "LoginView" });
-    return;
-  }
+//   if (!token && to.name !== "LoginView") {
+//     next({ name: "LoginView" });
+//     return;
+//   }
 
-  if (token && to.name === "LoginView") {
-    next({ path: "/" });
-    return;
-  }
+//   if (token && to.name === "LoginView") {
+//     next({ path: "/" });
+//     return;
+//   }
 
-  next();
-});
+//   next();
+// });
 
 export default router;
