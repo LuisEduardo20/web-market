@@ -51,19 +51,6 @@
           prepend-inner-icon="mdi-lock-outline"
         ></v-text-field>
 
-        <div
-          class="text-subtitle-1 text-medium-emphasis mt-4 mb-2 d-flex justify-end"
-        >
-          <a
-            class="text-caption text-decoration-none text-blue hover-link"
-            href="#"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Esqueceu sua senha?</a
-          >
-        </div>
-
         <v-btn
           class="mb-8"
           color="blue"
@@ -72,7 +59,7 @@
           block
           type="submit"
         >
-          Login
+          Cadastrar-se
         </v-btn>
       </v-form>
 
@@ -80,16 +67,14 @@
         class="pt-4 d-flex flex-column flex-sm-row align-center justify-center ga-2 flex-wrap"
       >
         <p class="text-subtitle-1 text-medium-emphasis ma-0">
-          Não tem uma conta ainda?
+          Já possui uma conta?
         </p>
         <a
-          rel="noopener noreferrer"
-          class="text-decoration-none text-blue hover-link"
-          href=""
-          @click="handleNavigateToSignUp"
+          class="text-decoration-none text-blue hover-link cursor-pointer"
+          @click="handleNavigateToLogin"
         >
-          Cadastre-se aqui</a
-        >
+          Faça o login aqui
+        </a>
       </div>
     </v-sheet>
   </v-container>
@@ -122,8 +107,8 @@ const passwordRules = [
   },
 ];
 
-const handleNavigateToSignUp = () => {
-  router.push({ name: "RegisterView" });
+const handleNavigateToLogin = () => {
+  router.push({ path: "/login" });
 };
 
 const onSubmit = () => {
