@@ -69,12 +69,11 @@
         </p>
         <a
           rel="noopener noreferrer"
-          class="text-decoration-none text-blue hover-link"
-          href=""
+          class="text-decoration-none text-blue hover-link cursor-pointer"
           @click="handleNavigateToSignUp"
         >
-          Cadastre-se aqui</a
-        >
+          Cadastre-se aqui
+        </a>
       </div>
     </v-sheet>
   </v-container>
@@ -108,7 +107,7 @@ const passwordRules = [
 ];
 
 const handleNavigateToSignUp = () => {
-  router.push({ name: "RegisterView" });
+  router.push({ path: "/register" });
 };
 
 const onSubmit = () => {
