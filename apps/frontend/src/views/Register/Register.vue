@@ -4,10 +4,10 @@
   >
     <div class="d-flex flex-column align-center px-4 ga-2">
       <h2 class="text-title-1 text-medium-emphasis text-center">
-        Bem vindo de volta!
+        Cadastre sua conta
       </h2>
       <p class="text-body-1 text-medium-emphasis text-center">
-        Por favor, insira suas credenciais para continuar.
+        Conecte-se com nossa comunidade de vendas!
       </p>
     </div>
 
@@ -19,6 +19,13 @@
       rounded="lg"
     >
       <v-form fast-fail @submit.prevent="onSubmit">
+        <v-text-field
+          v-model="email"
+          :rules="emailRules"
+          label="Nome completo"
+          prepend-inner-icon="mdi-account"
+        ></v-text-field>
+
         <v-text-field
           v-model="email"
           :rules="emailRules"
@@ -36,18 +43,13 @@
           @click:append-inner="visible = !visible"
         ></v-text-field>
 
-        <div
-          class="text-subtitle-1 text-medium-emphasis mt-4 mb-2 d-flex justify-end"
-        >
-          <a
-            class="text-caption text-decoration-none text-blue hover-link"
-            href="#"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Esqueceu sua senha?</a
-          >
-        </div>
+        <v-text-field
+          type="password"
+          v-model="password"
+          :rules="passwordRules"
+          label="Confirme a senha"
+          prepend-inner-icon="mdi-lock-outline"
+        ></v-text-field>
 
         <v-btn
           class="mb-8"
@@ -57,7 +59,7 @@
           block
           type="submit"
         >
-          Login
+          Cadastrar-se
         </v-btn>
       </v-form>
 
@@ -65,14 +67,13 @@
         class="pt-4 d-flex flex-column flex-sm-row align-center justify-center ga-2 flex-wrap"
       >
         <p class="text-subtitle-1 text-medium-emphasis ma-0">
-          Não tem uma conta ainda?
+          Já possui uma conta?
         </p>
         <a
-          rel="noopener noreferrer"
           class="text-decoration-none text-blue hover-link cursor-pointer"
-          @click="handleNavigateToSignUp"
+          @click="handleNavigateToLogin"
         >
-          Cadastre-se aqui
+          Faça o login aqui
         </a>
       </div>
     </v-sheet>
@@ -106,8 +107,8 @@ const passwordRules = [
   },
 ];
 
-const handleNavigateToSignUp = () => {
-  router.push({ path: "/register" });
+const handleNavigateToLogin = () => {
+  router.push({ path: "/login" });
 };
 
 const onSubmit = () => {
