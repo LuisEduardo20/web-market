@@ -16,12 +16,6 @@ const AuthRoutes: RouteRecordRaw = {
       component: () => import("@/views/Register/Register.vue"),
       meta: { currentIndex: "auth/register" },
     },
-    // {
-    //   name: "ResetView",
-    //   path: "/resetPassword",
-    //   component: () => import("@/views/ResetPassword/ResetPassword.vue"),
-    //   meta: { currentIndex: "reset" },
-    // },
   ],
 };
 
