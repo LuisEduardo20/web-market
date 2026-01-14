@@ -1,19 +1,34 @@
 import "reflect-metadata";
 import express from "express";
 import container from "@/inversify.config";
+import { InversifyExpressServer } from "inversify-express-utils";
 import { TYPES } from "@/types";
 import { HelloController } from "@/controllers/HelloController";
 import { DatabaseService } from "@/services/DatabaseService";
+import "@/controllers/AuthController";
 
-const app = express();
+const server = new InversifyExpressServer(container);
 const port = process.env.PORT || 3000;
 
 const helloCtrl = container.get<HelloController>(TYPES.HelloController);
 const dbService = container.get<DatabaseService>(TYPES.DatabaseService);
 
-app.get("/hello", (req, res) => helloCtrl.hello(req, res));
+server.setConfig((app) => {
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
+});
 
-// Connect to database and start server
+// server.setErrorConfig((app) => {
+//   app.use((err, req, res, next) => {
+//     console.error(err.stack);
+//     res.status(500).send("Something broke!");
+//   });
+// });
+
+const app = server.build();
+// app.get("/hello", (req, res) => helloCtrl.hello(req, res));
+
+//? Connect to database and start server
 (async () => {
   try {
     await dbService.connect();
