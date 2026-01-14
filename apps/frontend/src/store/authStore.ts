@@ -1,18 +1,20 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
-// import { useLocalStore } from './localStore'
-// import { useSessionStore } from './sessionStore'
+import { useLocalStore } from "./localStore";
+import { useSessionStore } from "./sessionStore";
 // import type { IUser } from '@/interfaces/IUser'
 // import type { ILogin } from '@/interfaces/ILogin'
 // import type { profileEnum } from '@/enums/profileEnum'
 // import type { PermissionsType } from '@/types/PermissionsType'
 
 export const useAuthStore = defineStore("authStore", () => {
-  // const localStore = useLocalStore()
-  // const sessionStore = useSessionStore()
-  // const token = ref<string>(
-  //   localStore.getDataFromStore('token') || sessionStore.getDataFromStore('token') || ''
-  // )
+  const localStore = useLocalStore();
+  const sessionStore = useSessionStore();
+  const token = ref<string>(
+    localStore.getDataFromStore("token") ||
+      sessionStore.getDataFromStore("token") ||
+      ""
+  );
   // const refreshToken = ref<string>(localStore.getDataFromStore('refreshToken') || '')
   // const userData = ref<IUser>(localStore.getDataFromStore('userData'))
   // const userProfile = ref<string>(localStore.getDataFromStore('userProfile') || '')
@@ -127,7 +129,7 @@ export const useAuthStore = defineStore("authStore", () => {
   // })
 
   return {
-    // token,
+    token,
     // userData,
     // userProfile,
     // userProfileImage,
